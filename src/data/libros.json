@@ -1,0 +1,77 @@
+{
+  "libros": {
+    "year": "2025",
+    "categorias": [
+      {
+        "nombre": "CSS",
+        "libros": [
+          {
+            "id": "css1",
+            "titulo": "CSS in Depth (Second Edition)",
+            "autor": "Keith J. Grant",
+            "editorial": "Manning",
+            "edicion": "2ª ed.",
+            "nivel": "Intermedio a Avanzado",
+            "temas": "Cascade layers, logical properties, subgrid, container queries, animaciones",
+            "linkCompra": "https://dl.ebooksworld.ir/motoman/Manning.CSS.in.Depth.www.EBooksWorld.ir.pdf",
+            "porQue": "Revisado en 2025 con las mejores prácticas modernas de CSS."
+          },
+          {
+            "id": "css2",
+            "titulo": "CSS Secrets",
+            "autor": "Lea Verou",
+            "editorial": "O’Reilly",
+            "edicion": "1ª ed.",
+            "nivel": "Intermedio",
+            "temas": "Técnicas avanzadas y trucos elegantes en CSS",
+            "linkCompra": "https://archive.org/details/CSSSecretsVkComWebtackles/page/n3/mode/2up",
+            "porQue": "Recomendado en 2025 por su enfoque práctico en problemas reales de diseño."
+          }
+        ]
+      },
+      {
+        "nombre": "JavaScript",
+        "libros": [
+          {
+            "id": "js1",
+            "titulo": "Eloquent JavaScript (4th Edition)",
+            "autor": "Marijn Haverbeke",
+            "editorial": "No Starch Press",
+            "edicion": "2024",
+            "nivel": "Principiante a Intermedio",
+            "temas": "JavaScript moderno, ECMAScript 2024, ejercicios interactivos",
+            "linkCompra": "https://eloquentjavascript.net/",
+            "porQue": "Actualizado en 2024 y disponible gratuitamente en línea; ampliamente citado en 2025."
+          },
+          {
+            "id": "js2",
+            "titulo": "JavaScript: The Definitive Guide (5th Edition)",
+            "autor": "David Flanagan",
+            "editorial": "O’Reilly",
+            "edicion": "5ª",
+            "nivel": "Intermedio a Avanzado",
+            "temas": "Lenguaje JS, API DOM, ES2024+, diseño de apps complejas",
+            "linkCompra": "https://pepa.holla.cz/wp-content/uploads/2016/08/JavaScript-The-Definitive-Guide-6th-Edition.pdf",
+            "porQue": "Considerado de referencia por expertos para dominar JavaScript."
+          }
+        ]
+      },
+      {
+        "nombre": "React",
+        "libros": [
+          {
+            "id": "react1",
+            "titulo": "The Road to React (2025 Edition)",
+            "autor": "Robin Wieruch",
+            "editorial": "Leanpub",
+            "edicion": "2025",
+            "nivel": "Principiante a Intermedio",
+            "temas": "Fundamentos React modernos, Hooks, Testing, despliegue",
+            "linkCompra": "https://phanindra-reddy.github.io/portfolio/static/media/The%20Road%20to%20learn%20React.83694f81.pdf",
+            "porQue": "Edición 2025 actualizada, excelente para comenzar con código moderno y práctica real."
+          }
+        ]
+      }
+    ]
+  }
+}
