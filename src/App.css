@@ -17,31 +17,99 @@ body {
 h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   color: #1e3a8a;
   letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/*FILTROS Y BUSQUEDA*/
+.searching-methods {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem; 
 }
 
 /*FILTRO*/
-label {
-  font-weight: bold;
-  margin-right: 0.5rem;
+.filtro-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
+/* Select sin flecha nativa, con espacio para flechita personalizada */
 select {
-  padding: 0.5rem 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  padding: 0.75rem 2.5rem 0.75rem 1rem; /* espacio extra a la derecha para la flecha */
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
   background-color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+  width: 150px;
+}
+
+/*FLECHA PERSONALIZADA*/
+.filtro-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #2563eb;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 select:hover {
   border-color: #2563eb;
   box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+/*BARRA DE BUSQUEDA*/
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.25rem 0.5rem 0.25rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.search:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: transparent;
+  width: 180px;
+  transition: width 0.3s ease;
+}
+
+.search-input:focus {
+  width: 220px;
+}
+
+.search .material-symbols-outlined {
+    color: #888;
 }
 
 /*TARJETAS*/
@@ -100,6 +168,7 @@ select:hover {
 
 .card-libro a:hover {
   background-color: #1e40af;
+  transform: scale(1.03);
 }
 
 @media (max-width: 600px) {
@@ -107,7 +176,12 @@ select:hover {
     font-size: 2rem;
   }
 
+  .searching-methods {
+        justify-content: flex-start;
+    }
+
   .lista-libros {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
