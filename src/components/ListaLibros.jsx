@@ -45,18 +45,39 @@ const getCategoryIcon = (categoryName, size = 20) => {
 function ListaLibros() {
   const categorias = data.libros.categorias;
 
-  const [filtro, setFiltro] = useState("Todos");
-
+  const [filtrosSeleccionados, setFiltrosSeleccionados] = useState(["Todos"]);
   const [busqueda, setBusqueda] = useState("");
   
   const temasDisponibles = ["Todos", ...categorias.map((cat) => cat.nombre)];
 
+  // Handle filter toggle logic
+  const toggleFiltro = (tema) => {
+    if (tema === "Todos") {
+      setFiltrosSeleccionados(["Todos"]);
+    } else {
+      setFiltrosSeleccionados(prev => {
+        const newFilters = prev.filter(f => f !== "Todos");
+        
+        if (newFilters.includes(tema)) {
+          const filtered = newFilters.filter(f => f !== tema);
+          return filtered.length === 0 ? ["Todos"] : filtered;
+        } else {
+          return [...newFilters, tema];
+        }
+      });
+    }
+  };
+
+  // Filter books based on selected filters
   const librosFiltrados = categorias
-    .filter((cat) => filtro === "Todos" || cat.nombre === filtro)
+    .filter((cat) => 
+      filtrosSeleccionados.includes("Todos") || 
+      filtrosSeleccionados.includes(cat.nombre)
+    )
     .flatMap((cat) =>
       cat.libros.map((libro) => ({ ...libro, tema: cat.nombre }))
     )
-    /* Filtro para buscar libros */
+    /* Search within filtered results */
     .filter((libro) => {
         const q = busqueda.toLowerCase();
         return (
@@ -72,35 +93,45 @@ function ListaLibros() {
       
       {/* Contenedor del filtro y barra de navegacion */}
       <div className="searching-methods">
-        <label htmlFor="filtro-tema">Filtrar por tema:</label>
-
-        {/* Agrega este div con clase filtro-container */}
-        <div className="filtro-container">
-          <select
-            id="filtro-tema"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-          >
-            {temasDisponibles.map((tema, i) => (
-              <option key={i} value={tema}>
-                {tema}
-              </option>
-            ))}
-          </select>
+        {/* Search Bar Section */}
+        <div className="search-section">
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="search">
+              <input
+                className="search-input"
+                type="search"
+                placeholder="Título o Autor"
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+              />
+              <span className="material-symbols-outlined"> search </span>
+            </div>
+          </form>
         </div>
 
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="search">
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Título o Autor"
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-            />
-            <span className="material-symbols-outlined"> search </span>
+        {/* Filter Section */}
+        <div className="filters-section">
+          <div className="filter-label">
+            <span>Filtrar por:</span>
           </div>
-        </form>
+          <div className="filter-buttons">
+            {temasDisponibles.map((tema) => (
+              <button
+                key={tema}
+                className={`filter-btn ${filtrosSeleccionados.includes(tema) ? 'active' : ''} ${tema === 'Todos' ? 'all-filter' : ''}`}
+                onClick={() => toggleFiltro(tema)}
+                aria-pressed={filtrosSeleccionados.includes(tema)}
+              >
+                {tema === 'Todos' ? (
+                  <span className="filter-icon">🔍</span>
+                ) : (
+                  getCategoryIcon(tema, 18)
+                )}
+                <span className="filter-text">{tema}</span>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
 
