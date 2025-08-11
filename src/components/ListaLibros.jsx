@@ -5,14 +5,14 @@ import "../App.css";
 function ListaLibros() {
   const categorias = data.libros.categorias;
 
-  const [filtro, setFiltro] = useState("todos");
+  const [filtro, setFiltro] = useState("Todos");
 
   const [busqueda, setBusqueda] = useState("");
   
-  const temasDisponibles = ["todos", ...categorias.map((cat) => cat.nombre)];
+  const temasDisponibles = ["Todos", ...categorias.map((cat) => cat.nombre)];
 
   const librosFiltrados = categorias
-    .filter((cat) => filtro === "todos" || cat.nombre === filtro)
+    .filter((cat) => filtro === "Todos" || cat.nombre === filtro)
     .flatMap((cat) =>
       cat.libros.map((libro) => ({ ...libro, tema: cat.nombre }))
     )
@@ -32,24 +32,23 @@ function ListaLibros() {
       
       {/* Contenedor del filtro y barra de navegacion */}
       <div className="searching-methods">
-        {/* Filtro por tema */}
         <label htmlFor="filtro-tema">Filtrar por tema:</label>
-        <select
-          id="filtro-tema"
-          value={filtro}
-          onChange={
-            (e) =>
-              setFiltro(
-                e.target.value
-              ) /*Actualiza el estado 'filtro' al cambiar la selección */
-          }
-        >
-          {temasDisponibles.map((tema, i) => (
-            <option key={i} value={tema}>
-              {tema}
-            </option>
-          ))}
-        </select>
+
+        {/* Agrega este div con clase filtro-container */}
+        <div className="filtro-container">
+          <select
+            id="filtro-tema"
+            value={filtro}
+            onChange={(e) => setFiltro(e.target.value)}
+          >
+            {temasDisponibles.map((tema, i) => (
+              <option key={i} value={tema}>
+                {tema}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="search">
             <input
@@ -63,6 +62,7 @@ function ListaLibros() {
           </div>
         </form>
       </div>
+
 
       {/* Contenedor de tarjetas de libros */}
       <div className="lista-libros">
