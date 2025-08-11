@@ -1,39 +1,113 @@
-/* App.css */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f9fafc, #dce3f0);
   margin: 0;
+  padding: 0;
+  color: #1f2937;
+}
+
+/*CONTENEDOR PRINCIPAL*/
+.App {
   padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
 }
+
+/*TITULO PRINCIPAL*/
 h2 {
-  margin-bottom: 1rem;
-}
-select {
-  padding: 0.5rem;
-  font-size: 1rem;
+  text-align: center;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  color: #1e3a8a;
+  letter-spacing: 1px;
 }
-.lista-libros {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+
+/*FILTRO*/
+label {
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
-.card-libro {
-  background-color: white;
+
+select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
 }
+
+select:hover {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+/*TARJETAS*/
+.lista-libros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+
+.card-libro {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .card-libro:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/*TITULO DEL LIBRO*/
 .card-libro h3 {
-  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #2563eb;
 }
+
+/*DETALLES DEL LIBRO*/
+.card-libro p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+
+/*ENLACE*/
 .card-libro a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 0.8rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 6px;
   text-decoration: none;
-  color: #007bff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.card-libro a:hover {
+  background-color: #1e40af;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  .lista-libros {
+    grid-template-columns: 1fr;
+  }
 }
